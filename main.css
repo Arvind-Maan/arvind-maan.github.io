@@ -1,11 +1,84 @@
-.darkBG {
-    background: #999;
-} 
-
-.darkerBG {
-    background: #333;
+body {
+    background-image: url("matte-grey-background.jpg")
 }
 
-.darkestBG {
-    background: #000;
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+
+.name {
+    margin-top: 200px;
+    text-align : center;
+    font-family : 'Ubuntu', sans-serif;
+    font-size: 60px;
+    letter-spacing: 5px;
+    padding : 0px;
+    margin-bottom: 10px
+}
+
+.subheader {
+    text-align : center;
+    font-family : 'Times', cursive;
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+.flickerLeft {
+    position: relative;
+    top: 30px;
+    left: 370px;
+    font-family : 'Press Start 2P', serif;
+    font-size: 15px;
+    color: #92f94d;
+    animation: flickerAnimation 3s infinite;
+}
+
+.flickerRight {
+    position: relative;
+    top: 30px;
+    left: 800px;
+    font-family : 'Press Start 2P', serif;
+    font-size: 15px;
+    color: #92f94d;
+    animation: flickerAnimation 3s infinite;
+}
+.logo {
+    text-align: center;
+    height: 30px;
+    widows: 30px;
+}
+
+.footer {
+    font-family : 'Times New Roman', Times, serif;
+    font-size:10px;
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+.aboutme-title{
+    position: fixed;
+    top: 250px;
+    left: 500px;
+    font-family : 'Ubuntu', sans-serif;
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+.aboutme-text{
+    position: fixed;
+    top: 300px;
+    left: 500px;
+    font-family : 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.selfphoto {
+    position: fixed;
+    top: 250px;
+    left: 150px;
+    text-align: center;
+    height: 250px;
+    widows: 250px;
 }
