@@ -1,5 +1,7 @@
 body {
-    background-image: url("images/website-layout.png")
+    background-image: url("images/website-layout.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 @keyframes flickerAnimation {
@@ -8,21 +10,12 @@ body {
     100% { opacity:1; }
 }
 
-.name {
-    margin-top: 200px;
+.header {
+    margin-top: 10%;
+    margin-left: 30%;
     text-align : center;
-    font-family : 'Ubuntu', sans-serif;
-    font-size: 60px;
-    letter-spacing: 5px;
-    padding : 0px;
-    margin-bottom: 10px
-}
-
-.subheader {
-    text-align : center;
-    font-family : 'Times', cursive;
-    font-size: 20px;
-    margin-top: 0px;
+    height: 250px;
+    width: 600px;
 }
 
 .flickerLeft {
