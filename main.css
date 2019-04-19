@@ -1,53 +1,38 @@
 body {
-    background-image: url("images/website-layout.png");
+    background: url('assets/images/website-layout.png') no-repeat center center fixed; 
     background-size: cover;
-    background-repeat: no-repeat;
 }
 
-@keyframes flickerAnimation {
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.menu-header {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+menu {
+    display: flex;
+    justify-content: center;
 }
 
 .header {
-    margin-top: 10%;
-    margin-left: 30%;
-    text-align : center;
-    height: 250px;
-    width: 600px;
+    height: 90%;
+    width: 60%;
 }
 
-.flickerLeft {
-    position: relative;
-    top: 30px;
-    left: 370px;
-    font-family : 'Press Start 2P', serif;
-    font-size: 15px;
-    color: #92f94d;
-    animation: flickerAnimation 3s infinite;
-}
 
-.flickerRight {
-    position: relative;
-    top: 30px;
-    left: 800px;
-    font-family : 'Press Start 2P', serif;
-    font-size: 15px;
-    color: #92f94d;
-    animation: flickerAnimation 3s infinite;
-}
 .logo {
-    text-align: center;
-    padding: 50px;
-    padding-top: 0px;
     height: 30px;
-    widows: 30px;
 }
 
 .footer {
     font-family : 'Times New Roman', Times, serif;
     font-size:10px;
+    color: grey;
     position:fixed;
     bottom:0;
     left:0;
@@ -61,6 +46,7 @@ body {
     font-size: 25px;
     letter-spacing: 5px;
 }
+
 .aboutme-text{
     position: fixed;
     top: 300px;
