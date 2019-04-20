@@ -8,22 +8,55 @@ img {
     height: auto;
 }
 
-.menu-header {
-    margin-top: 10%;
-    display: flex;
-    justify-content: center;
+@keyframes animateCloud {
+    0% {
+        margin-left: 100%;
+    }
+    100% {
+        margin-left: -800px;
+    }
 }
 
-menu {
-    display: flex;
-    justify-content: center;
+.cloud {
+    width: 130px;
+    height: 75px;
+    grid-row-start: fixed;
+    grid-row-end: 10;
+    grid-column-start: 0;
+    grid-column-end: 10;
+    animation: 30s animateCloud linear infinite;
 }
+
+
+.grid-container {
+    display: grid;
+    grid-column-gap: 0px;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+.grid-item-center {
+    grid-column-start: 4;
+    grid-column-end: 12;
+    grid-row-start: 3;
+    grid-row-end: 7;
+}
+
+.grid-item-logo-git {
+    grid-column-start: 4;
+    grid-row-start: 8;
+}
+
+.grid-item-logo-resume {
+    grid-column-start: 8;
+    grid-row-start: 8;
+}
+
 
 .header {
     height: 90%;
     width: 60%;
 }
-
 
 .logo {
     height: 30px;
@@ -36,30 +69,4 @@ menu {
     position:fixed;
     bottom:0;
     left:0;
-}
-
-.aboutme-title{
-    position: fixed;
-    top: 250px;
-    left: 500px;
-    font-family : 'Ubuntu', sans-serif;
-    font-size: 25px;
-    letter-spacing: 5px;
-}
-
-.aboutme-text{
-    position: fixed;
-    top: 300px;
-    left: 500px;
-    font-family : 'Ubuntu', sans-serif;
-    font-size: 15px;
-}
-
-.selfphoto {
-    position: fixed;
-    top: 250px;
-    left: 150px;
-    text-align: center;
-    height: 250px;
-    widows: 250px;
 }
