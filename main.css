@@ -18,7 +18,7 @@ img {
         margin-left: 100%;
     }
     100% {
-        margin-left: -200px;
+        margin-left: 0%;
     }
 }
 
@@ -32,6 +32,10 @@ img {
 
 .cloud {
     animation: animateCloud 50s linear 0s infinite;
+}
+
+.cloud-container {
+    
 }
 
 .header-container {
@@ -53,8 +57,12 @@ img {
     padding-bottom: 2em;
 }
 
-.logo {
-    height: 30px;
+.logo{
+    height: 40px;
+}
+
+.logo:hover{
+    filter: sepia(80%);
 }
 
 .footer {
