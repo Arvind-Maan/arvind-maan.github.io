@@ -9,7 +9,7 @@ While not bad, I wasn't very satisfied with the layout of the images as I didn't
 
 Second Draft:
 
-![website draft2](assets/drafts/Draft2.png) ![website draft2 aboutme](assets/drafts/Draft2-AboutMe.png)
+![website draft2](assets/drafts/Draft2.png) 
 
 (April 2019)
 The second draft has a scrolling feature which infinitely scrolls through the above background to give kind of a platformer background feel.
