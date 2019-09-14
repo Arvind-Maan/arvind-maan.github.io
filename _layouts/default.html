@@ -1,15 +1,24 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <img src="assets/images/avatar200x200.png" class="content-avatar"> </img>
     <div class="content-box">
-            <h1>{{ page.title | downcase }}</h1>
-            <p>{{ page.description | downcase }}</p>
+      <h1>{{ page.title | downcase }}</h1>
+      <p>{{ page.description | downcase }}</p>
+      <div class="content-row">
+          {{content}}
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
