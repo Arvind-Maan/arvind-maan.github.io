@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss",
+		"_sass/main.scss"
+	],
+	"sourcesContent": [
+		"@import \"main\";\n",
+		".body {\n    display: flex;\n    background-color: lightslategray;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-end;\n    min-height: 100vh;\n    margin: 0;\n}\n\n.content-box {\n    position: relative;\n    text-align: center;\n    width: 100%;\n    min-height: 70vh;\n    height: auto;\n    background-color: white;\n    font-family: 'Fira Sans';\n}"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,KAAK,CAAC,EACF,OAAO,EAAE,IAAI,EACb,gBAAgB,EAAE,cAAc,EAChC,cAAc,EAAE,MAAM,EACtB,WAAW,EAAE,MAAM,EACnB,eAAe,EAAE,QAAQ,EACzB,UAAU,EAAE,KAAK,EACjB,MAAM,EAAE,CAAC,GACZ;;AAED,AAAA,YAAY,CAAC,EACT,QAAQ,EAAE,QAAQ,EAClB,UAAU,EAAE,MAAM,EAClB,KAAK,EAAE,IAAI,EACX,UAAU,EAAE,IAAI,EAChB,MAAM,EAAE,IAAI,EACZ,gBAAgB,EAAE,KAAK,EACvB,WAAW,EAAE,WAAW,GAC3B"
+}
