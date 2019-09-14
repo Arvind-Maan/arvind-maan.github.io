@@ -14,3 +14,10 @@ Second Draft:
 (April 2019)
 The second draft has a scrolling feature which infinitely scrolls through the above background to give kind of a platformer background feel.
 This implementation was meant for me to become more comfortable with the use of flexbox and cs animations. In my next draft I intend to work more on the animations and perhaps recreating a more professional looking website.
+
+Third Draft: 
+
+![website draft3](assets/drafts/Draft3.png) 
+
+(September 2019)
+After some time, I found that I wasn't very impressed with my design on the previous website and wished to create a more simple, but more sleek design. The 3rd draft of my website is made using Jekyll and in my opinion, looks much nicer than the previous iteration. The design is supplemented by a simple pulse animation on the middle icon. 
