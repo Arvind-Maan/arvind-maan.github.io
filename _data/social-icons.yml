@@ -1,0 +1,7 @@
+social-icons:
+- title: Github
+  url: https://github.com/arvind-maan
+  class: github
+- title: LinkedIn
+  url: https://www.linkedin.com/in/arvindmaan
+  class: linkedin
