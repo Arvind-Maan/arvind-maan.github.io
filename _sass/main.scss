@@ -72,8 +72,10 @@ body {
 }
 
 .content-row {
+  position: absolute;
   width: 50%;
-  padding-top: 10%;
+  bottom: 100px;
+  background: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
