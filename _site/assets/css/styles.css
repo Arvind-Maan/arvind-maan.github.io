@@ -14,7 +14,7 @@ body { margin: 0; height: 100%; background-color: #f0f0f0; }
 
 .content-box { display: flex; flex-direction: column; align-items: center; padding-top: 90px; background-color: white; font-family: "Fira Sans"; width: 100%; height: 65%; border-radius: 2px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
 
-.content-row { width: 50%; padding-top: 10%; display: flex; flex-direction: row; justify-content: space-evenly; }
+.content-row { position: absolute; width: 50%; bottom: 100px; background: #ffffff; display: flex; flex-direction: row; justify-content: space-evenly; }
 
 .icon { width: 30px; height: 30px; opacity: 0.2; z-index: 2; }
 
