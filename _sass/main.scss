@@ -55,7 +55,6 @@ body {
 
 .content-avatar img:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-
 }
 
 .content-box {
@@ -102,5 +101,27 @@ body {
     opacity: 0;
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+    z-index: 2;
+  }
+  
+  .icon:hover {
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+  }
+  .content-row {
+    width: 100%;
+  }
+  .content-avatar {
+    width: 300px;
+    min-height: 300px;
   }
 }
