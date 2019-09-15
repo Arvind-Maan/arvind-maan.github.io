@@ -29,9 +29,10 @@ body { margin: 0; height: 100%; background-color: #f0f0f0; }
     -webkit-transform: scale(1);
     transform: scale(1); } }
 
-@media only screen and (max-width: 850px) { .icon { width: 60px; height: 60px; opacity: 0.2; z-index: 2; }
+@media only screen and (max-device-width: 500px) { .icon { width: 60px; height: 60px; opacity: 0.2; z-index: 2; }
   .icon:hover { width: 60px; height: 60px; opacity: 1; }
   .content-row { width: 100%; }
-  .content-avatar { width: 300px; min-height: 300px; } }
+  .content-avatar { width: 300px; min-height: 300px; }
+  .content-box { font-size: 150%; } }
 
 /*# sourceMappingURL=styles.css.map */
