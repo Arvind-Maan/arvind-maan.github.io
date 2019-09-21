@@ -1,3 +1,9 @@
+$bgcolor: #f0f0f0;
+$bg2color: #ffffff;
+$avataroffset: -95px;
+$circleradius: 50%;
+$animationoffset: -20%;
+
 html {
   height: 100%;
 }
@@ -5,7 +11,7 @@ html {
 body {
   margin: 0;
   height: 100%;
-  background-color: #f0f0f0;
+  background-color: $bgcolor;
 }
 
 .container {
@@ -17,26 +23,26 @@ body {
 }
 
 .content-avatar {
-  bottom: -95px;
-  background-color: white;
+  bottom: $avataroffset;
+  background-color: $bg2color;
   z-index: 1;
   position: relative;
   width: 200px;
   min-height: 200px;
-  border: #f0f0f0 solid 25px;
-  border-radius: 50%;
+  border: $bgcolor solid 25px;
+  border-radius: $circleradius;
 
   &::before {
     animation: pulse 1.5s linear infinite;
-    border: #ffffff solid 20px;
-    border-radius: 50%;
+    border: $bgcolor solid 20px;
+    border-radius: $circleradius;
     box-sizing: border-box;
     content: " ";
     height: 140%;
-    left: -20%;
+    left: $animationoffset;
     opacity: 0.9;
     position: absolute;
-    top: -20%;
+    top: $animationoffset;
     transform: scale(0.7);
     width: 140%;
     z-index: -1;
@@ -44,12 +50,12 @@ body {
 }
 
 .content-avatar img {
-  width: 92%;
-  height: 92%;
+  width: 90%;
+  height: 90%;
   padding: 8px;
   object-fit: contain;
   z-index: 2;
-  border-radius: 50%;
+  border-radius: $circleradius;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -63,7 +69,7 @@ body {
   align-items: center;
   padding-top: 90px;
 
-  background-color: white;
+  background-color: $bg2color;
   font-family: "Fira Sans";
   width: 100%;
   height: 65%;
@@ -75,7 +81,7 @@ body {
   position: absolute;
   width: 50%;
   bottom: 100px;
-  background: #ffffff;
+  background: $bg2color;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -89,19 +95,20 @@ body {
 }
 
 .icon:hover {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   opacity: 1;
 }
+
 /*
     Colour schemes:
     white & #f0f0f0
     
+
 */
 @keyframes pulse {
   to {
     opacity: 0;
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -115,8 +122,6 @@ body {
   }
   
   .icon:hover {
-    width: 60px;
-    height: 60px;
     opacity: 1;
   }
   .content-row {
