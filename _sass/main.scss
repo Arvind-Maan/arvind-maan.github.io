@@ -6,12 +6,15 @@ $animationoffset: -20%;
 
 html {
   height: 100%;
+  background: url("/assets/images/cover2.png") no-repeat #666666;
+  background-size: cover;
 }
 
 body {
   margin: 0;
   height: 100%;
-  background-color: $bgcolor;
+  background-color: rgba(68, 68, 68, 0.4);
+  background-image: linear-gradient(140deg,rgba(68, 68, 68, 0.6) 20%, rgba(0, 0, 0, 0.8));
 }
 
 .container {
@@ -24,38 +27,39 @@ body {
 
 .content-avatar {
   bottom: $avataroffset;
-  background-color: $bg2color;
   z-index: 1;
   position: relative;
-  border: $bgcolor solid 25px;
+  width: 100px;
+  min-height: 100px;
   border-radius: $circleradius;
-  object-fit: contain;
-  width:200px;
-  min-height: 200px;
+  
   &::before {
-    animation: pulse 1.5s linear infinite;
-    border: $bgcolor solid 20px;
+    animation: pulse 1.3s linear infinite;
+    border: #000000 solid 20px;
     border-radius: $circleradius;
     box-sizing: border-box;
     content: " ";
-    height: 140%;
+    width:140%;
+    height:140%;
     left: $animationoffset;
-    opacity: 0.9;
+    opacity: 0.3;
     position: absolute;
     top: $animationoffset;
     transform: scale(0.7);
-    width: 140%;
     z-index: -1;
   }
 }
 
 .content-avatar-img {
-  width: 92%;
-  height: 92%;
+  width: 100%;
+  height: 100%;
   padding: 8px;
-
+  object-fit: contain;
   z-index: 2;
   border-radius: $circleradius;
+  background: #a0a0a0;
+  box-sizing: border-box;
+  border: black solid 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -68,20 +72,15 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 90px;
-
-  background-color: $bg2color;
   font-family: "Fira Sans";
   width: 100%;
   height: 100%;
-  border-radius: 2px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .content-row {
   position: absolute;
   width: 50%;
   bottom: 15%;
-  background: $bg2color;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -129,7 +128,7 @@ body {
   }
   
   .content-avatar { 
-    width: 300px; height: 300px; border-radius: 50%; 
+    width: 300px; min-height: 300px; border-radius: 50%; 
   }
   .content-avatar-img { 
     padding: 10px;
