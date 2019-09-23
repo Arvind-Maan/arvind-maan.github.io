@@ -1,87 +1,95 @@
-$bgcolor: #f0f0f0;
-$bg2color: #ffffff;
-$avataroffset: -95px;
+$avataroffset: -20%;
 $circleradius: 50%;
 $animationoffset: -20%;
 
 html {
   height: 100%;
+  background: url("/assets/images/cover2.png") no-repeat #666666;
+  background-size: cover;
 }
 
 body {
   margin: 0;
   height: 100%;
-  background-color: $bgcolor;
+  background-color: rgba(68, 68, 68, 0.5);
+  background-image: linear-gradient(140deg, rgba(68, 68, 68, 0.6) 20%, rgba(0, 0, 0, 0.8));
 }
 
 .container {
   display: flex;
   height: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
 }
 
 .content-avatar {
   bottom: $avataroffset;
-  background-color: $bg2color;
   z-index: 1;
   position: relative;
-  border: $bgcolor solid 25px;
+  width: 100px;
+  min-height: 100px;
   border-radius: $circleradius;
-  object-fit: contain;
-  width:200px;
-  min-height: 200px;
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.2), 0 3px 6px rgba(255, 255, 255, .2);
+
   &::before {
-    animation: pulse 1.5s linear infinite;
-    border: $bgcolor solid 20px;
+    animation: pulse 3s linear infinite;
+    border: rgba(255, 255, 255, 0.5) solid 2px;
     border-radius: $circleradius;
     box-sizing: border-box;
     content: " ";
+    width: 140%;
     height: 140%;
     left: $animationoffset;
-    opacity: 0.9;
+    opacity: 0.3;
     position: absolute;
     top: $animationoffset;
-    transform: scale(0.7);
-    width: 140%;
+    transform: scale(0.725);
     z-index: -1;
   }
 }
 
 .content-avatar-img {
-  width: 92%;
-  height: 92%;
+  width: 100%;
+  height: 100%;
   padding: 8px;
-
+  object-fit: contain;
   z-index: 2;
   border-radius: $circleradius;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.content-avatar-img:hover {
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-sizing: border-box;
+  &:hover {
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.5), 0 3px 6px  rgba(255, 255, 255, .5);
+  }
 }
 
 .content-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 90px;
-
-  background-color: $bg2color;
-  font-family: "Fira Sans";
+  padding-top: 150px;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  font-family: 'EB Garamond', serif;
+  color: rgba(255, 255, 255, .6);
+  text-align: center;
+  line-height: .5;
+  text-shadow: 0px 2px  rgba(255, 255, 255, 0.2);
 }
 
+.title { 
+  font-size: 40px;
+}
+
+.description {
+  font-size: 20px;
+}
+
+
 .content-row {
+  padding-top:40%; 
   position: absolute;
-  width: 50%;
+  width: 30%;
   bottom: 15%;
-  background: $bg2color;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -92,20 +100,11 @@ body {
   height: 30px;
   opacity: 0.2;
   z-index: 2;
+  &:hover {
+    opacity: 1;
+  }
 }
 
-.icon:hover {
-  width: 30px;
-  height: 30px;
-  opacity: 1;
-}
-
-/*
-    Colour schemes:
-    white & #f0f0f0
-    
-
-*/
 @keyframes pulse {
   to {
     opacity: 0;
@@ -114,27 +113,36 @@ body {
 }
 
 @media only screen and (max-device-width: 500px) {
+  html {
+    background: url("/assets/images/cover2.png") no-repeat #666666;
+    background-position: top right;
+    background-size: cover;
+  }
   .icon {
     width: 80px;
     height: 80px;
-    opacity: 0.2;
+    opacity: 0.7;
     z-index: 2;
   }
-  
-  .icon:hover {
-    opacity: 1;
-  }
+
   .content-row {
     width: 100%;
   }
-  
-  .content-avatar { 
-    width: 300px; height: 300px; border-radius: 50%; 
+
+  .content-avatar {
+    width: 200px;
+    min-height: 200px;
   }
-  .content-avatar-img { 
+  .content-avatar-img {
     padding: 10px;
-  } 
+  }
   .content-box {
-    font-size: 250%;
+    padding-top: 50%;
+  }
+  .title {
+    font-size: 60px;
+  }
+  .description {
+    font-size: 40px;
   }
 }
