@@ -2,29 +2,14 @@
 <html>
 
 <head>
-  <link rel="icon" href="/assets/favicon.ico/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link rel="icon" href="/assets/favicon.ico/favicon.ico" rel="icon" type="image/x-icon" />
   <meta charset="utf-8">
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet"></head>
 
 <body>
-  <div class="container">
-    <div class="content-avatar">
-      <a href="/assets/resources/resume.pdf">
-        <img class="content-avatar-img"src="/assets/images/new-avatar.png"> </img>
-      </a>
-    </div>
-    <div class="content-box">
-      <h1 class= "title">{{ page.title }}</h1>
-      <p class= "description">{{ page.description }}</p>
-    </div>
-    <div class="content-row">
-      {% include icons.html %}
-    </div>
-  </div>
-  </div>
+  {% include content.html %}
 </body>
 
 </html>
