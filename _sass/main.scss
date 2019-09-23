@@ -31,7 +31,6 @@ body {
   min-height: 100px;
   border-radius: $circleradius;
   box-shadow: 0 3px 6px rgba(255, 255, 255, 0.2), 0 3px 6px rgba(255, 255, 255, .2);
-
   &::before {
     animation: pulse 3s linear infinite;
     border: rgba(255, 255, 255, 0.5) solid 2px;
@@ -132,17 +131,17 @@ body {
   .content-avatar {
     width: 200px;
     min-height: 200px;
+    border-radius: 50%;
   }
-  .content-avatar-img {
-    padding: 10px;
-    object-fit: contain;
-  }
+
   .content-box {
     padding-top: 50%;
   }
+
   .title {
     font-size: 60px;
   }
+  
   .description {
     font-size: 40px;
   }
