@@ -65,18 +65,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 150px;
+  padding-top: 160px;
   width: 100%;
   height: 100%;
   font-family: 'EB Garamond', serif;
   color: rgba(255, 255, 255, .6);
   text-align: center;
-  line-height: .5;
-  text-shadow: 0px 2px  rgba(255, 255, 255, 0.2);
+  line-height: .6;
 }
 
 .title { 
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .description {
@@ -129,20 +128,15 @@ body {
   }
 
   .content-avatar {
-    width: 200px;
-    min-height: 200px;
+    width: 300px;
+    min-height: 300px;
     border-radius: 50%;
   }
 
   .content-box {
     padding-top: 50%;
   }
-
-  .title {
-    font-size: 60px;
-  }
-  
-  .description {
-    font-size: 40px;
+  .title,.description { 
+    font-size: 250%;
   }
 }
