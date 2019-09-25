@@ -20,4 +20,11 @@ Third Draft:
 ![website draft3](assets/drafts/Draft3.png) 
 
 (September 2019)
-After some time, I found that I wasn't very impressed with my design on the previous website and wished to create a more simple, but more sleek design. The 3rd draft of my website is made using Jekyll and in my opinion, looks much nicer than the previous iteration. The design is supplemented by a simple pulse animation on the middle icon. 
+After some time, I found that I wasn't very impressed with my design on the previous website and wished to create a more simple, but more sleek design. The 3rd draft of my website is made using Jekyll and in my opinion, looks much nicer than the previous iteration. The design is complimented by a simple pulse animation on the middle icon. 
+
+Fourth Draft: 
+
+![website draft3](assets/drafts/Draft4.png) 
+
+(September 2019)
+The previous iteration of my website was a step in the right direction but I found it to be too plain. I took parts from it I did enjoy, like the centerpiece avatar, and pulled in new elements to make it a little less boring. The background was created from a picture I took from Vancouver, BC with a black and white filter and CSS gradient applied over top.
