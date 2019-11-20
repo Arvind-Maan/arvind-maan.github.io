@@ -17,6 +17,7 @@ Third Draft:
 (September 2019)
 After some time, I found that I wasn't very impressed with my design on the previous website and wished to create a more simple, but more sleek design. The 3rd draft of my website is made using Jekyll and in my opinion, looks much nicer than the previous iteration. The design is complimented by a simple pulse animation on the middle icon. 
 
+Second Draft:
 ![website draft2](assets/drafts/Draft2.png) 
 
 (April 2019)
@@ -27,6 +28,5 @@ First Draft:
 ![website draft1](assets/drafts/Draft1.png)
 
 (March 2019)
+This is the first thing I ever made using HTML & CSS.
 While not bad, I wasn't very satisfied with the layout of the images as I didn't use grid or flexbox, which resulted in it not translating well over different browser sizes. Also, I wanted to learn more about animation in css so I plan for the next draft to be laid out better as well as have some more interesting animations than the flashing texts.
-
-Second Draft:
