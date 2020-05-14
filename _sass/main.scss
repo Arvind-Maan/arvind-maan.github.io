@@ -30,7 +30,7 @@ body {
 }
 
 .content-avatar {
-	left: 35%;
+	bottom: $avataroffset;
 	z-index: 1;
 	position: relative;
 	min-width: 100px;
@@ -77,15 +77,6 @@ body {
 	font-size: 20px;
 }
 
-.avatar-row {
-	bottom: $avataroffset;
-	display: flex;
-	position: relative;
-	margin: 0 auto;
-	width: 25%;
-	height: 10%;
-	text-align: center;
-}
 .content-row {
 	width: 30%;
 	display: flex;
@@ -201,7 +192,7 @@ $bp-lg: 800px;
 
 @media (min-width: 960px) {
 	.card-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
@@ -292,10 +283,6 @@ blockquote.speech {
 		opacity: 0.7;
 		z-index: 2;
 	}
-
-	.avatar-row {
-		text-align: center;
-	}
 	.content-row {
 		width: 100%;
 	}
@@ -306,9 +293,8 @@ blockquote.speech {
 	}
 
 	.content-avatar {
-		left: 5%;
-		min-width: 250px;
-		min-height: 250px;
+		min-width: 300px;
+		min-height: 300px;
 		border-radius: 50%;
 	}
 
