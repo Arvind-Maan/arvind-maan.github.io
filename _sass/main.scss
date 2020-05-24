@@ -144,6 +144,8 @@ $bp-lg: 800px;
 	--spacing-xl: 32px;
 	--spacing-xxl: 64px;
 	--width-container: 1200px;
+	--colour-black: #1e1e1e;
+	--colour-white: #ffffff;
 }
 
 .projects-top-row {
@@ -155,7 +157,7 @@ $bp-lg: 800px;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 5%;
+	height: 30px;
 	color: white;
 	background-color: var(--background-dark);
 	font-size: 20px;
@@ -209,6 +211,7 @@ $bp-lg: 800px;
 }
 
 .card__background {
+	overflow: hidden;
 	background-size: cover;
 	background-position: center;
 	border-radius: var(--spacing-l);
@@ -253,6 +256,18 @@ $bp-lg: 800px;
 	word-spacing: 100vw;
 }
 
+.card__bottom {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	bottom: 0;
+	position: absolute;
+	justify-content: space-evenly;
+}
+
+.card__bottom a {
+	width: 50%;
+}
 blockquote.bubble {
 	background-repeat: no-repeat !important;
 	background-size: 100% 100%;
@@ -323,4 +338,43 @@ blockquote.speech {
 	.projects-section {
 		padding-top: 10px;
 	}
+}
+
+button,
+.button {
+	--button: hsl(0, 0%, 12%);
+	--button-hover: hsl(0, 0%, 20%);
+	--button-active: hsl(0, 0%, 30%);
+	--button-visited: hsl(0, 0%, 20%);
+	--button-colour: var(--colour-white);
+	--button-border: var(--colour-black);
+}
+
+button {
+	opacity: 40%;
+	width: 100%;
+	padding: 0.9rem 1.7rem;
+	color: var(--button-colour);
+	font-weight: 500;
+	font-size: 16px;
+	transition: all 0.3s ease-in-out;
+	background: var(--button);
+	border: solid 1px var(--button-border);
+	border-radius: 40%;
+	box-shadow: inset 0 0 0 2px var(--colour-white);
+}
+
+button:hover {
+	opacity: 100%;
+	text-decoration: underline;
+	background: var(--button-hover);
+	box-shadow: inset 0 0 0 4px var(--colour-white);
+}
+
+button:active {
+	background: var(--button-active);
+}
+
+button:visited {
+	background: var(--button-visited);
 }
