@@ -147,6 +147,7 @@ $bp-lg: 800px;
 }
 
 .projects-top-row {
+	font-family: var(--font-sans);
 	display: flex;
 	flex-direction: row;
 	justify-items: left;
@@ -155,21 +156,23 @@ $bp-lg: 800px;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 30px;
-	background-color: rgba(50, 50, 50, 1);
+	height: 34px;
+	background-color: #1e1e1e;
 	color: white;
 	font-size: 20px;
-	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px -2px #1e1e1e;
 }
 
 .projects-section {
-	align-items: flex-start;
 	background-color: rgba(68, 68, 68, 0.5);
 	background-image: linear-gradient(
 		140deg,
 		rgba(68, 68, 68, 0.6) 20%,
 		rgba(0, 0, 0, 0.8)
 	);
+	background-size: cover;
+	background-repeat: repeat;
+	align-items: flex-start;
 	display: flex;
 	min-height: 100%;
 	justify-content: center;
@@ -179,8 +182,8 @@ $bp-lg: 800px;
 .card-grid {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	grid-column-gap: var(--spacing-l);
-	grid-row-gap: var(--spacing-l);
+	column-gap: var(--spacing-l);
+	row-gap: var(--spacing-l);
 	max-width: var(--width-container);
 	width: 100%;
 }
@@ -231,12 +234,11 @@ $bp-lg: 800px;
 
 .card:hover button {
 	opacity: 100%;
-	background: var(--button-hover);
 }
 .card:hover button:hover {
 	opacity: 100%;
-	text-decoration: underline;
-	background: #666666;
+	text-decoration: none;
+	background: #1e1e1e;
 }
 .card-grid:hover > .card:not(:hover) .card__background {
 	filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
@@ -309,14 +311,18 @@ button,
 }
 
 button {
+	font-family: var(--font-sans);
 	opacity: 0%;
 	width: 100%;
 	padding: 1.7rem 1.7rem;
-	color: var(--button-colour);
-	font-weight: 500;
+	color: white;
+	font-weight: 600;
 	font-size: 16px;
 	transition: all 0.3s ease-in-out;
-	background: var(--button);
+	background: #53b3cb;
+	border: none;
+	border-right: 1px groove #1e1e1e;
+	border-top: 1px groove #1e1e1e;
 }
 
 button:hover {
