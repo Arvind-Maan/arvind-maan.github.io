@@ -11,42 +11,34 @@ const StyledApp = styled.div`
 	align-items: center;
 `;
 
-const SquareContainer = styled.div`
-	height: 600px;
-	width: 600px;
-	display: flex;
-	position: absolute;
-	flex-direction: ${(props) => props.dir};
-`;
-
-const SingleContainer = styled.div`
-	height: 80%;
-	width: 100%;
-	z-index: 1;
-`;
-const InternalContainer = styled.div`
-	display: flex;
-	flex-direction: ${(props) => props.dir};
-	height: 100%;
-	width: 80%;
-`;
-
 const App = () => {
 	return (
+		//margins are top right bottom left
 		<StyledApp className="App">
-			<SquareContainer dir="row">
-				<Square
-					size="100%"
-					colour="#14213d"
-					title="Blue"
-					side="left"
-					margins="20% 0px 0px 0px"
-				/>
-				<InternalContainer dir="column">
-					<Square size="100%" colour="#fca311" title="Orange" side="right" />
-					<Square size="100%" colour="#e5e5e5" title="Grey" side="right" />
-				</InternalContainer>
-			</SquareContainer>
+			<Square
+				size="600px"
+				colour="#2d3142"
+				title="ARVIND MAAN"
+				side="left"
+				margins="-400px 0px 0px -450px"
+				zIndex="1"
+			/>
+			<Square
+				size="300px"
+				colour="#4f5d75"
+				title="PROJ ECTS"
+				side="right"
+				margins="-300px 0px 0px 125px"
+				zIndex="0"
+			/>
+			<Square
+				size="300px"
+				colour="#ef8354"
+				title="BLOG"
+				side="right"
+				margins="0px 0px 0px 125px"
+				zIndex="0"
+			/>
 		</StyledApp>
 	);
 };
