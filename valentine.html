@@ -3,13 +3,9 @@ layout: default
 title: "For You"
 ---
 <div class="valentine">
-  <header class="valentine__hero">
-    <h1>Going for a stroll</h1>
-  </header>
+  <header class="valentine__hero"></header>
 
   <section class="panel" id="auth-panel">
-    <h2>Secret Check</h2>
-    <p class="panel__hint">Answer the questions only you would know.</p>
     <div class="auth">
       <div class="auth__question" id="auth-question"></div>
       <input class="auth__input" id="auth-input" type="text" autocomplete="off" />
@@ -19,12 +15,11 @@ title: "For You"
   </section>
 
   <section class="panel is-hidden" id="adventure-panel">
-    <h2>Mini Walk</h2>
-    <p class="panel__hint">Use the pad to move. Something is waiting ahead.</p>
     <div class="scene" id="scene">
       <div class="world" id="world">
         <div class="scene__sky"></div>
         <img class="bg-cloud" src="/assets/animations/backgrounds/nature_5/2.png" alt="" />
+        <img class="bg-sun" id="bg-sun" src="/assets/animations/sun.png" alt="" />
         <div class="scene__ground" id="ground">
           <div class="ground-decor" id="ground-decor"></div>
         </div>
@@ -35,6 +30,10 @@ title: "For You"
           src="/assets/animations/sanjana-walking-2/frame-1.png"
           alt="Zelda"
         />
+
+        <div class="zelda-bubble is-hidden" id="zelda-bubble">
+          <span id="zelda-bubble-text"><strong>Sanjana:</strong> Ugh, I dozed off…</span>
+        </div>
 
         <div class="sprite sprite--link" id="link-right">
           <img
@@ -59,20 +58,26 @@ title: "For You"
       <button class="interact-btn is-hidden" id="interact-btn-left" type="button">Talk</button>
 
       <div class="dialog is-hidden" id="dialog">
-        <div class="dialog__bubble">
-          <strong>Arvind:</strong> Sanjana, will you be my valentine?
-        </div>
-        <div class="dialog__choices">
-          <button class="btn btn--yes" id="yes-btn-a" type="button">Yes</button>
-          <button class="btn btn--yes" id="yes-btn-b" type="button">Yes</button>
-        </div>
+          <div class="dialog__bubble" id="dialog-text">
+            <strong>Arvind:</strong> I know this is a little late.
+          </div>
+          <div class="dialog__choices is-hidden" id="dialog-choices">
+            <button class="btn btn--yes" id="yes-btn-a" type="button">Yes</button>
+            <button class="btn btn--yes" id="yes-btn-b" type="button">Yes</button>
+          </div>
       </div>
     </div>
     <div class="adventure__controls">
       <div class="dpad" role="group" aria-label="movement pad">
-        <button class="dpad__btn" id="back-btn" type="button">◀</button>
-        <button class="dpad__btn" id="forward-btn" type="button">▶</button>
-        <button class="dpad__btn dpad__btn--jump" id="jump-btn" type="button">⤒</button>
+        <button class="dpad__btn" id="back-btn" type="button">
+          <img src="/assets/animations/left.png" alt="Left" />
+        </button>
+        <button class="dpad__btn dpad__btn--right" id="forward-btn" type="button">
+          <img src="/assets/animations/left.png" alt="Right" />
+        </button>
+        <button class="dpad__btn dpad__btn--jump" id="jump-btn" type="button">
+          <img src="/assets/animations/top.png" alt="Jump" />
+        </button>
       </div>
     </div>
     <div class="adventure__feedback" id="adventure-feedback"></div>
@@ -82,6 +87,10 @@ title: "For You"
     <div class="confetti" aria-hidden="true"></div>
   </section>
 </div>
+
+<audio id="bg-music" src="/assets/sounds/bg-music.flac" loop></audio>
+<audio id="talk-sound" src="/assets/sounds/talk.flac"></audio>
+<audio id="celebrate-sound" src="/assets/sounds/celebrate.flac"></audio>
 
 <style>
   :root {
@@ -249,6 +258,17 @@ title: "For You"
     z-index: 1;
   }
 
+  .bg-sun {
+    position: absolute;
+    width: 90px;
+    height: auto;
+    image-rendering: pixelated;
+    z-index: 1;
+    pointer-events: none;
+    top: 30px;
+    right: 40px;
+  }
+
 
   .scene__ground {
     position: absolute;
@@ -331,11 +351,12 @@ title: "For You"
     width: 86px;
     height: auto;
     image-rendering: pixelated;
-    transform: scaleX(-1);
+    transform: scaleX(-1) scale(1.25);
+    transform-origin: bottom center;
   }
 
   .sprite--link-left .link__sprite {
-    transform: scaleX(1);
+    transform: scaleX(1) scale(1.25);
   }
 
   .interact-btn {
@@ -360,9 +381,11 @@ title: "For You"
   .dialog {
     position: absolute;
     bottom: 170px;
-    width: min(320px, 80vw);
-    display: grid;
-    gap: 10px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
     text-align: center;
     z-index: 6;
   }
@@ -370,15 +393,50 @@ title: "For You"
   .dialog__bubble {
     background: #fff;
     border-radius: 16px;
-    padding: 12px 14px;
+    padding: 8px 14px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     font-size: 16px;
+    line-height: 1.3;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .zelda-bubble {
+    position: absolute;
+    max-width: 260px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 8px 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    line-height: 1.3;
+    display: inline-block;
+    text-align: center;
+    z-index: 15;
+  }
+
+  .zelda-bubble::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #fff;
   }
 
   .dialog__choices {
     display: flex;
     gap: 12px;
     justify-content: center;
+    margin: 0;
+    width: auto;
+  }
+
+  .dialog__choices.is-hidden {
+    display: none;
   }
 
   .adventure__controls {
@@ -398,24 +456,28 @@ title: "For You"
 
   .dpad__btn {
     width: 60px;
-    height: 50px;
-    border-radius: 14px;
+    height: 60px;
     border: none;
-    background: #ffe5ef;
-    color: #5b1832;
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    opacity: 0.95;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
     touch-action: manipulation;
+    padding: 0;
   }
 
   .dpad__btn:active {
     transform: translateY(1px);
   }
 
-  .dpad__btn--jump {
-    background: #fff2c4;
+  .dpad__btn img {
+    width: 36px;
+    height: 36px;
+    image-rendering: pixelated;
+    pointer-events: none;
+  }
+
+  .dpad__btn--right img {
+    transform: scaleX(-1);
   }
 
   .confetti {
@@ -452,8 +514,9 @@ title: "For You"
 
 <script>
   const authData = [
-    { question: "Where did we have our first date?", answers: ["REPLACE_ME"] },
-    { question: "What's my nickname for you?", answers: ["REPLACE_ME"] }
+    { question: "What is your name?", answers: ["sanjana"] },
+    { question: "What were we supposed to drink for our first date", answers: ["milkshake"] },
+    { question: "What is the name of  the city your boyfriend was born in", answers: ["winnipeg"] }
   ];
 
   const zeldaFrames = [
@@ -554,16 +617,24 @@ title: "For You"
   const interactBtn = document.getElementById("interact-btn");
   const interactBtnLeft = document.getElementById("interact-btn-left");
   const dialog = document.getElementById("dialog");
+  const dialogText = document.getElementById("dialog-text");
+  const dialogChoices = document.getElementById("dialog-choices");
+  const bgSun = document.getElementById("bg-sun");
+  const zeldaBubbleText = document.getElementById("zelda-bubble-text");
   const yesBtnA = document.getElementById("yes-btn-a");
   const yesBtnB = document.getElementById("yes-btn-b");
   const scene = document.getElementById("scene");
   const world = document.getElementById("world");
   const groundDecor = document.getElementById("ground-decor");
+  const zeldaBubble = document.getElementById("zelda-bubble");
+  const bgMusic = document.getElementById("bg-music");
+  const talkSound = document.getElementById("talk-sound");
+  const celebrateSound = document.getElementById("celebrate-sound");
 
   const yesPanel = document.getElementById("yes-panel");
 
   let authIndex = 0;
-  let position = 60;
+  let position = 160;
   let frameIndex = 0;
   let walkTimer = null;
   let facing = 1;
@@ -580,10 +651,33 @@ title: "For You"
   let isCelebrating = false;
   let celebrateTimer = null;
   let sanjanaCelebrateTimer = null;
-  const startPosition = 60;
+  const startPosition = 160;
   let linkAnimating = false;
+  const dialogLines = [
+    "I know this is late,",
+    "but I need you to complete my heart container.",
+    "Will you be my Valentine?"
+  ];
+  let dialogIndex = 0;
+  let dialogTimer = null;
+  let controlsLocked = true;
+  const zeldaLines = [
+    "Ugh, I dozed off…",
+    "Where am I now?",
+    "I smell something sweet to the right."
+  ];
+  let zeldaIndex = 0;
+  let zeldaTimer = null;
+  let audioStarted = false;
 
   const normalize = (value) => value.trim().toLowerCase();
+
+  const startAudio = () => {
+    if (audioStarted) return;
+    audioStarted = true;
+    bgMusic.volume = 0.5;
+    bgMusic.play().catch(() => {});
+  };
 
   const showAuthQuestion = () => {
     authQuestion.textContent = authData[authIndex].question;
@@ -603,7 +697,12 @@ title: "For You"
       if (authIndex >= authData.length) {
         authPanel.classList.add("is-hidden");
         adventurePanel.classList.remove("is-hidden");
+        startAudio();
         renderGroundDecor();
+        zeldaBubble.classList.remove("is-hidden");
+        zeldaIndex = 0;
+        showZeldaLine();
+        startZeldaAutoAdvance();
         updateZelda();
       } else {
         showAuthQuestion();
@@ -624,7 +723,7 @@ title: "For You"
   };
 
   const updateZelda = () => {
-    zelda.style.transform = `translateX(${position}px) translateY(${jumpOffset}px) scaleX(${facing}) scale(1.2)`;
+    zelda.style.transform = `translateX(${position}px) translateY(${jumpOffset}px) scaleX(${facing}) scale(2)`;
     const offset = updateCamera();
     const setAnchor = (anchorEl, targetEl, offsetX = 0, offsetY = 0) => {
       if (!anchorEl || !targetEl) return;
@@ -642,7 +741,7 @@ title: "For You"
 
     if (!dialog.classList.contains("is-hidden")) {
       const anchor = activeLinkSide === "left" ? linkLeft : linkRight;
-      setAnchor(anchor, dialog, -30, -180);
+      setAnchor(anchor, dialog, -30, -140);
     }
     if (!interactBtn.classList.contains("is-hidden")) {
       setAnchor(linkRight, interactBtn, 0, -28);
@@ -650,6 +749,10 @@ title: "For You"
     if (!interactBtnLeft.classList.contains("is-hidden")) {
       setAnchor(linkLeft, interactBtnLeft, 0, -28);
     }
+    if (!zeldaBubble.classList.contains("is-hidden")) {
+      setAnchor(zelda, zeldaBubble, 90, -90);
+    }
+    // sun is static
   };
 
   const startWalkAnimation = () => {
@@ -667,8 +770,12 @@ title: "For You"
   };
 
   const playJump = () => {
+    if (controlsLocked) return;
     if (isJumping) return;
     isJumping = true;
+    zeldaBubble.classList.add("is-hidden");
+    clearInterval(zeldaTimer);
+    zeldaTimer = null;
     if (jumpFrames.length === 0) {
       const duration = 600;
       const startTime = performance.now();
@@ -709,6 +816,7 @@ title: "For You"
   const playSanjanaCelebrate = () => {
     if (isCelebrating) return;
     isCelebrating = true;
+    zelda.style.transform = `translateX(${position}px) translateY(${jumpOffset}px) scaleX(${facing}) scale(1.25)`;
     let index = 0;
     clearInterval(sanjanaCelebrateTimer);
     sanjanaCelebrateTimer = setInterval(() => {
@@ -755,7 +863,7 @@ title: "For You"
   const playCelebrate = () => {
     if (!activeLinkSprite) return;
     linkAnimating = true;
-    activeLinkSprite.style.transform = "scale(1.2)";
+    activeLinkSprite.style.transform = "scale(1.5)";
     let index = 0;
     clearInterval(celebrateTimer);
     celebrateTimer = setInterval(() => {
@@ -792,9 +900,13 @@ title: "For You"
   };
 
   const startMove = (dir) => {
+    if (controlsLocked) return;
     facing = dir >= 0 ? 1 : -1;
     velocity = dir * 150;
     startWalkAnimation();
+    zeldaBubble.classList.add("is-hidden");
+    clearInterval(zeldaTimer);
+    zeldaTimer = null;
     if (!dialog.classList.contains("is-hidden")) {
       dialog.classList.add("is-hidden");
       interactBtn.classList.add("is-hidden");
@@ -862,8 +974,11 @@ title: "For You"
   jumpBtn.addEventListener("click", playJump);
 
   interactBtn.addEventListener("click", () => {
+    startAudio();
     interactBtn.classList.add("is-hidden");
     adventureFeedback.textContent = "...";
+    talkSound.currentTime = 0;
+    talkSound.play().catch(() => {});
     if (!activeLinkSprite) {
       activeLinkSprite = linkSpriteRight;
       activeLinkSide = "right";
@@ -871,6 +986,10 @@ title: "For You"
     rightLinkTalked = true;
     playLinkInteract(() => {
       dialog.classList.remove("is-hidden");
+      dialogIndex = 0;
+      showDialogLine();
+      dialogChoices.classList.add("is-hidden");
+      startDialogAutoAdvance();
       leftLinkActive = true;
       linkLeft.classList.remove("is-hidden");
       updateZelda();
@@ -879,25 +998,81 @@ title: "For You"
   });
 
   interactBtnLeft.addEventListener("click", () => {
+    startAudio();
     interactBtnLeft.classList.add("is-hidden");
     adventureFeedback.textContent = "...";
+    talkSound.currentTime = 0;
+    talkSound.play().catch(() => {});
     activeLinkSprite = linkSpriteLeft;
     activeLinkSide = "left";
     playLinkInteract(() => {
       dialog.classList.remove("is-hidden");
+      dialogIndex = 0;
+      showDialogLine();
+      dialogChoices.classList.add("is-hidden");
+      startDialogAutoAdvance();
       updateZelda();
     });
   });
 
   const acceptYes = () => {
     dialog.classList.add("is-hidden");
+    clearInterval(dialogTimer);
+    dialogTimer = null;
     playSanjanaCelebrate();
     playCelebrate();
+    celebrateSound.currentTime = 0;
+    celebrateSound.play().catch(() => {});
     yesPanel.classList.remove("is-hidden");
     yesBtnA.disabled = true;
     yesBtnB.disabled = true;
     yesBtnA.style.pointerEvents = "none";
     yesBtnB.style.pointerEvents = "none";
+    controlsLocked = true;
+  };
+
+  const showDialogLine = () => {
+    dialogText.innerHTML = `<strong>Arvind:</strong> ${dialogLines[dialogIndex]}`;
+  };
+
+  const advanceDialog = () => {
+    if (dialogIndex < dialogLines.length - 1) {
+      dialogIndex += 1;
+      showDialogLine();
+      if (dialogIndex === dialogLines.length - 1) {
+        dialogChoices.classList.remove("is-hidden");
+      }
+    }
+  };
+
+  const startDialogAutoAdvance = () => {
+    clearInterval(dialogTimer);
+    dialogTimer = setInterval(() => {
+      if (dialogIndex >= dialogLines.length - 1) {
+        clearInterval(dialogTimer);
+        dialogTimer = null;
+        return;
+      }
+      advanceDialog();
+    }, 2000);
+  };
+
+  const showZeldaLine = () => {
+    zeldaBubbleText.innerHTML = `<strong>Sanjana:</strong> ${zeldaLines[zeldaIndex]}`;
+  };
+
+  const startZeldaAutoAdvance = () => {
+    clearInterval(zeldaTimer);
+    zeldaTimer = setInterval(() => {
+      if (zeldaIndex >= zeldaLines.length - 1) {
+        clearInterval(zeldaTimer);
+        zeldaTimer = null;
+        controlsLocked = false;
+        return;
+      }
+      zeldaIndex += 1;
+      showZeldaLine();
+    }, 2000);
   };
 
   const revealRightLink = () => {
@@ -906,6 +1081,8 @@ title: "For You"
 
   yesBtnA.addEventListener("click", acceptYes);
   yesBtnB.addEventListener("click", acceptYes);
+
+  dialogText.addEventListener("click", advanceDialog);
 
 
   const getWorldWidth = () => {
@@ -937,4 +1114,6 @@ title: "For You"
   updateZelda();
   startLinkIdle();
   requestAnimationFrame(tick);
+
+  document.addEventListener("pointerdown", startAudio, { once: true });
 </script>
