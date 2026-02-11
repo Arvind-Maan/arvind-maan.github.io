@@ -79,8 +79,6 @@ title: "For You"
   </section>
 
   <section class="panel is-hidden" id="yes-panel">
-    <h2>Yay! It's a date.</h2>
-    <p class="panel__hint">I love you. Now let's celebrate together.</p>
     <div class="confetti" aria-hidden="true"></div>
   </section>
 </div>
@@ -580,6 +578,8 @@ title: "For You"
   let isJumping = false;
   let jumpOffset = 0;
   let isCelebrating = false;
+  let celebrateTimer = null;
+  let sanjanaCelebrateTimer = null;
   const startPosition = 60;
   let linkAnimating = false;
 
@@ -642,7 +642,7 @@ title: "For You"
 
     if (!dialog.classList.contains("is-hidden")) {
       const anchor = activeLinkSide === "left" ? linkLeft : linkRight;
-      setAnchor(anchor, dialog, -30, -80);
+      setAnchor(anchor, dialog, -30, -180);
     }
     if (!interactBtn.classList.contains("is-hidden")) {
       setAnchor(linkRight, interactBtn, 0, -28);
@@ -710,13 +710,10 @@ title: "For You"
     if (isCelebrating) return;
     isCelebrating = true;
     let index = 0;
-    const interval = setInterval(() => {
+    clearInterval(sanjanaCelebrateTimer);
+    sanjanaCelebrateTimer = setInterval(() => {
       zelda.src = sanjanaCelebrateFrames[index];
-      index += 1;
-      if (index >= sanjanaCelebrateFrames.length) {
-        clearInterval(interval);
-        isCelebrating = false;
-      }
+      index = (index + 1) % sanjanaCelebrateFrames.length;
     }, 140);
   };
 
@@ -758,14 +755,12 @@ title: "For You"
   const playCelebrate = () => {
     if (!activeLinkSprite) return;
     linkAnimating = true;
+    activeLinkSprite.style.transform = "scale(1.2)";
     let index = 0;
-    const interval = setInterval(() => {
+    clearInterval(celebrateTimer);
+    celebrateTimer = setInterval(() => {
       activeLinkSprite.src = celebrateFrames[index];
-      index += 1;
-      if (index >= celebrateFrames.length) {
-        clearInterval(interval);
-        linkAnimating = false;
-      }
+      index = (index + 1) % celebrateFrames.length;
     }, 140);
   };
 
@@ -899,6 +894,10 @@ title: "For You"
     playSanjanaCelebrate();
     playCelebrate();
     yesPanel.classList.remove("is-hidden");
+    yesBtnA.disabled = true;
+    yesBtnB.disabled = true;
+    yesBtnA.style.pointerEvents = "none";
+    yesBtnB.style.pointerEvents = "none";
   };
 
   const revealRightLink = () => {
