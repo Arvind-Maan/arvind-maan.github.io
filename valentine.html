@@ -560,7 +560,6 @@ title: "For You"
   const yesBtnB = document.getElementById("yes-btn-b");
   const scene = document.getElementById("scene");
   const world = document.getElementById("world");
-  const holes = document.getElementById("holes");
   const groundDecor = document.getElementById("ground-decor");
 
   const yesPanel = document.getElementById("yes-panel");
@@ -582,8 +581,6 @@ title: "For You"
   let jumpOffset = 0;
   let isCelebrating = false;
   const startPosition = 60;
-  const holePositions = [520, 940, 1360];
-  const holeWidth = 90;
   let linkAnimating = false;
 
   const normalize = (value) => value.trim().toLowerCase();
@@ -606,7 +603,6 @@ title: "For You"
       if (authIndex >= authData.length) {
         authPanel.classList.add("is-hidden");
         adventurePanel.classList.remove("is-hidden");
-        renderHoles();
         renderGroundDecor();
         updateZelda();
       } else {
@@ -709,24 +705,6 @@ title: "For You"
     }, 200);
   };
 
-  const resetToStart = () => {
-    position = startPosition;
-    velocity = 0;
-    jumpOffset = 0;
-    isJumping = false;
-    adventureFeedback.textContent = "Uh-oh. Try again — something good is waiting to the right.";
-    updateZelda();
-  };
-
-  const isOverHole = () => {
-    const zeldaWidth = 70;
-    return holePositions.some((holeX) => {
-      const holeLeft = holeX;
-      const holeRight = holeX + holeWidth;
-      const zeldaCenter = position + zeldaWidth / 2;
-      return zeldaCenter > holeLeft && zeldaCenter < holeRight;
-    });
-  };
 
   const playSanjanaCelebrate = () => {
     if (isCelebrating) return;
@@ -844,9 +822,6 @@ title: "For You"
       const { trigger, stop, leftTrigger } = getLinkPositions();
       position = Math.min(Math.max(position + velocity * delta, 0), stop);
       updateZelda();
-      if (!isJumping && isOverHole()) {
-        resetToStart();
-      }
       if (velocity > 0 && position >= trigger && !rightLinkTalked) {
         activeLinkSprite = linkSpriteRight;
         activeLinkSide = "right";
@@ -933,16 +908,6 @@ title: "For You"
   yesBtnA.addEventListener("click", acceptYes);
   yesBtnB.addEventListener("click", acceptYes);
 
-  const renderHoles = () => {
-    holes.innerHTML = "";
-    holePositions.forEach((x) => {
-      const hole = document.createElement("div");
-      hole.className = "hole";
-      hole.style.left = `${x}px`;
-      hole.style.width = `${holeWidth}px`;
-      holes.appendChild(hole);
-    });
-  };
 
   const getWorldWidth = () => {
     const cssValue = getComputedStyle(document.documentElement)
@@ -969,7 +934,6 @@ title: "For You"
   };
 
   showAuthQuestion();
-  renderHoles();
   renderGroundDecor();
   updateZelda();
   startLinkIdle();
