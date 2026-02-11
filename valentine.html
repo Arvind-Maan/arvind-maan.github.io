@@ -111,6 +111,7 @@ title: "For You"
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 24px;
     font-family: "EB Garamond", serif;
   }
@@ -224,7 +225,7 @@ title: "For You"
 
   .scene {
     position: relative;
-    height: 400px;
+    height: clamp(280px, 55vh, 420px);
     border-radius: 16px;
     overflow: hidden;
     border: 2px solid #f1bfd0;
@@ -507,8 +508,9 @@ title: "For You"
   @media (max-width: 480px) {
     h1 { font-size: 28px; }
     h2 { font-size: 24px; }
-    .panel { padding: 18px; }
-    .scene { height: 220px; }
+    .valentine { padding: 16px 12px 24px; }
+    .panel { padding: 16px; width: 96vw; }
+    .scene { height: 55vh; }
   }
 </style>
 
@@ -760,7 +762,7 @@ title: "For You"
     walkTimer = setInterval(() => {
       frameIndex = (frameIndex + 1) % zeldaFrames.length;
       zelda.src = zeldaFrames[frameIndex];
-    }, 80);
+    }, 120);
   };
 
   const stopWalkAnimation = () => {
@@ -902,7 +904,7 @@ title: "For You"
   const startMove = (dir) => {
     if (controlsLocked) return;
     facing = dir >= 0 ? 1 : -1;
-    velocity = dir * 150;
+    velocity = dir * 110;
     startWalkAnimation();
     zeldaBubble.classList.add("is-hidden");
     clearInterval(zeldaTimer);
